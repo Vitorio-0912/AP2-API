@@ -1,0 +1,92 @@
+<!-- detalhes_aluno.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes dos Professores</title>
+</head>
+
+
+
+<body>
+  <h1>Detalhes dos Professores</h1>
+  <p><strong>ID:</strong> {{ professor.id }}</p>
+  <p><strong>Nome:</strong> {{ professor.nome }}</p>
+  <p><strong>Idade:</strong> {{ professor.idade }}</p>
+  <p><strong>Materia:  </strong> {{ professor.materia}}</p>
+  <p><strong>Observações:  </strong> {{ professor.observacoes}}</p>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      color: white;
+    }
+
+    p {
+      width: 50%;
+      margin: 10px auto;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      color: black;
+    }
+
+    .form-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px; /* Espaço entre os formulários */
+      margin: 20px auto;
+    }
+
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      background-color: #2970ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1a5bb8;
+    }
+  </style>
+ <div class="form-container">
+  <form id="delete-form" action="{{ url_for('professores.delete_professor', id_professor=professor.id) }}" method="POST" class="form-inline">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit">Excluir Professor</button>
+  </form>
+
+  <form id="insert-form" action="{{ url_for('professores.adicionar_professor_page') }}" method="GET" class="form-inline">
+    <input type="hidden" name="_method" value="GET">
+    <button type="submit">Adicionar Novo Professor</button>
+  </form>
+
+  <form id="update-form" action="{{ url_for('professores.editar_professor_page', id_professor=professor.id) }}" method="GET" class="form-inline">
+    <input type="hidden" name="_method" value="GET">
+    <button type="submit">Editar Professores</button>
+  </form>
+</div>
+
+  
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Professores</title>
+</head>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: white;
+  }
+
+  ul {
+    width: 30%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  li {
+    list-style: none;
+    margin-bottom: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover {
+    color: #2970ff;
+  }
+</style>
+
+<body>
+  <h1>Lista de Professores</h1>
+  <ul>
+    {% for professor in professores %}
+    <li>
+      <a href="{{ url_for('professores.get_professor', id_professor=professor.id) }}">
+        (ID: {{ professor.id }}) (Nome: {{ professor.nome }}) (Idade: {{ professor.idade }})(Materia: {{ professor.materia }}) (observações: {{ professor.observacoes }})
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

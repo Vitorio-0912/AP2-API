@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atualizar Aluno</title>
+</head>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: white;
+  }
+
+  form {
+    width: 30%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+    background-color: #2970ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+</style>
+
+<body>
+  <h1>Atualizar Aluno</h1>
+  <form action="{{ url_for('alunos.update_aluno', id_aluno=aluno.id) }}" method="POST">
+    <!-- Altere o método de envio para PUT -->
+    <input type="hidden" name="_method" value="PUT">
+    <label for="nome">Nome:</label><br>
+    <input type="text" id="nome" name="nome" required><br>
+    
+    <label for="idade">Idade:</label><br>
+    <input type="number" id="idade" name="idade" required><br>
+    
+    <label for="turma_id">Turma:</label><br>
+    <input type="text" id="turma_id" name="turma_id" required><br>
+    
+    <label for="dt_nasc">Data de Nascimento:</label><br>
+    <input type="date" id="dt_nasc" name="dt_nasc" required><br>
+    
+    <label for="nt_primeiro_semestre">Nota Primeiro Semestre:</label><br>
+    <input type="number" id="nt_primeiro_semestre" name="nt_primeiro_semestre" step="0.01" required><br>
+    
+    <label for="nt_segundo_semestre">Nota Segundo Semestre:</label><br>
+    <input type="number" id="nt_segundo_semestre" name="nt_segundo_semestre" step="0.01" required><br>
+    <br>
+
+    <button type="submit">Atualizar</button>
+  </form>
+</body>
+
+</html>

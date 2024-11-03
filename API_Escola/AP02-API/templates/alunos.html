@@ -1,0 +1,64 @@
+<!-- alunos.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Alunos</title>
+
+</head>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: white;
+  }
+
+  ul {
+    width: 30%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  li {
+    list-style: none;
+    margin-bottom: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover {
+    color: #2970ff;
+  }
+</style>
+
+<body>
+  <h1>Lista de Alunos</h1>
+  <ul>
+    {% for aluno in alunos %}
+    <li><a href="{{ url_for('alunos.get_aluno', id_aluno=aluno.id) }}">(ID: {{ aluno.id }}) <br>(Nome: {{ aluno.nome }}) <br>
+         (Idade: {{ aluno.idade }}) <br> (Data de Nascimento: {{ aluno.dt_nasc.strftime('%d/%m/%Y') if aluno.dt_nasc else 'N/A' }})  <br>  (Turma: {{ aluno.turma_id }}) 
+         (Media: {{ aluno.media_final }})        
+        </a></li>
+    {% endfor %}
+  </ul>
+
+
+</body>
+
+</html>
